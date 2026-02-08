@@ -11,6 +11,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.metrics import classification_report, accuracy_score
 import os
 import joblib
+from text_preprocess import negation_preprocess
 
 # Constants
 DATA_PATH = os.path.join("data", "imdb_dataset_cleaned.csv")
@@ -46,8 +47,16 @@ def main():
 
     # with mlflow.start_run(run_name="LogisticRegression_Pipeline"):
     pipeline = Pipeline([
-        ('tfidf', TfidfVectorizer()),
-        ('clf', LogisticRegression())
+        (
+            'tfidf',
+            TfidfVectorizer(
+                ngram_range=(1, 2),
+                max_features=20000,
+                lowercase=False,
+                preprocessor=negation_preprocess,
+            ),
+        ),
+        ('clf', LogisticRegression(max_iter=1000))
     ])
 
     print("Running Cross-Validation...")

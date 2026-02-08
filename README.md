@@ -77,6 +77,22 @@ python3 src/evaluate.py --data_dir data/processed --models_dir models --output_d
 
 The generated plots will be saved in the `reports/` directory
 
+## Web App (Flask + JavaScript)
+
+Run the modern web UI with a Flask backend:
+
+```bash
+python3 src/web_app.py
+```
+
+Then open:
+
+```
+http://127.0.0.1:5000
+```
+
+The web UI lives in `web/templates/index.html` and `web/static/`.
+
 ## Notebooks
 
 For exploratory data analysis and initial experiments, refer to:
