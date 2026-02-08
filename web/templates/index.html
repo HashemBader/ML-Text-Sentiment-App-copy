@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sentiment Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <main class="page">
+      <section class="hero">
+        <div class="hero__badge">ML SENTIMENT</div>
+        <div class="hero__content">
+          <h1 class="hero__title">Sentiment Analysis</h1>
+          <p class="hero__subtitle">
+            Understand how customers feel in seconds. Paste a movie review and
+            get a clear Good/Bad verdict with confidence.
+          </p>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card__header">
+          <h2>Review input</h2>
+          <p>Paste text and let the model respond instantly.</p>
+        </div>
+
+        <div class="card__body">
+          <textarea
+            id="reviewText"
+            class="input"
+            placeholder="Type or paste a movie review..."
+          ></textarea>
+
+          <div class="actions">
+            <button id="predictBtn" class="btn btn--primary">Predict</button>
+            <button id="clearBtn" class="btn btn--ghost">Clear</button>
+          </div>
+
+          <div class="result" id="result">
+            <div class="result__label" id="resultLabel">Awaiting input...</div>
+            <div class="result__confidence" id="resultConfidence"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
