@@ -79,6 +79,13 @@ The generated plots will be saved in the `reports/` directory
 
 ## Web App
 
+### Try the Live Demo
+
+You can try the deployed web application here:
+**[https://ml-text-sentiment-app-l2hu.onrender.com/](https://ml-text-sentiment-app-l2hu.onrender.com/)**
+
+### Run Locally
+
 Run the web UI with a Flask backend:
 
 ```bash
