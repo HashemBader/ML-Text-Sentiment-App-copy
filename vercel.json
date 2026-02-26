@@ -1,7 +1,6 @@
 {
   "functions": {
     "index.py": {
-      "runtime": "python3.11",
       "excludeFiles": "{notebooks/**,data/**,mlruns/**,plots/**,src/**,web/**,.git/**}"
     }
   }
