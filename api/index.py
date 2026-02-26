@@ -2,12 +2,17 @@
 FastAPI app for sentiment prediction.
 """
 import re
+import sys
+import os
 from typing import Optional, Tuple
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import joblib
+
+# Ensure api/ is on the path so text_preprocess can be imported
+sys.path.insert(0, os.path.dirname(__file__))
 import text_preprocess  # noqa: F401 — must be imported before joblib loads the model
 
 model = None
@@ -16,7 +21,9 @@ model = None
 def get_model():
     global model
     if model is None:
-        model = joblib.load("classification_logreg.joblib")
+        model = joblib.load(
+            os.path.join(os.path.dirname(__file__), "..", "classification_logreg.joblib")
+        )
     return model
 
 app = FastAPI(title="Sentiment Analysis API")
