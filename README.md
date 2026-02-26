@@ -6,8 +6,8 @@ This project performs sentiment analysis on the IMDb Movie Reviews dataset using
 
 1.  **Clone the Repository**:
     ```bash
-    git clone https://github.com/HashemBader/ML-Text-Sentiment.git
-    cd ML-Text-Sentiment
+    git clone https://github.com/HashemBader/ML-Text-Sentiment-App.git
+    cd ML-Text-Sentiment-App
     ```
 
 2.  **Create and Activate Virtual Environment**:
@@ -25,7 +25,7 @@ This project performs sentiment analysis on the IMDb Movie Reviews dataset using
 3.  **Install Dependencies**:
     Install the required packages using:
     ```bash
-    pip install -r project/requirements.txt
+    pip install -r requirements.txt
     ```
 
 ## Data Preparation
@@ -82,20 +82,20 @@ The generated plots will be saved in the `reports/` directory
 ### Try the Live Demo
 
 You can try the deployed web application here:
-**[https://ml-text-sentiment-app-l2hu.onrender.com/](https://ml-text-sentiment-app-l2hu.onrender.com/)**
+**[https://ml-text-sentiment-app.vercel.app/](https://ml-text-sentiment-app.vercel.app/)**
 
 ### Run Locally
 
-Run the web UI with a Flask backend:
+Run the web app with FastAPI:
 
 ```bash
-python3 project/web_app.py
+uvicorn index:app --reload
 ```
 
 Then open:
 
 ```
-http://127.0.0.1:5000
+http://127.0.0.1:8000
 ```
 
 The web UI lives in `web/templates/index.html` and `web/static/`.
