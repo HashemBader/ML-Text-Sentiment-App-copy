@@ -1,18 +1,13 @@
 """
 FastAPI app for sentiment prediction.
 """
-import os
 import re
-import sys
 from typing import Optional, Tuple
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import joblib
-
-# Make text_preprocess importable (required by the pickled model pipeline)
-sys.path.insert(0, os.path.dirname(__file__))
 
 model = None
 
