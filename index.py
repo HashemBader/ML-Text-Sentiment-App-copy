@@ -1,11 +1,14 @@
 """
 FastAPI app for sentiment prediction.
 """
+import os
 import re
 from typing import Optional, Tuple
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 import joblib
 
@@ -28,6 +31,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+_BASE = os.path.dirname(__file__)
+app.mount("/static", StaticFiles(directory=os.path.join(_BASE, "web", "static")), name="static")
 
 
 # ---------- Schemas ----------
@@ -68,7 +74,7 @@ def negation_override(text: str) -> Tuple[Optional[str], Optional[str]]:
 
 @app.get("/")
 def root():
-    return {"message": "Sentiment Analysis API is running."}
+    return FileResponse(os.path.join(_BASE, "web", "templates", "index.html"))
 
 
 @app.post("/predict", response_model=PredictResponse)
